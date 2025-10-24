@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Expresso Tradicional",
+    "image": "/assets/ExpressoTradicional.svg",
+    "type": "Tradicional",
+    "description": "O tradicional café feito com água quente e grãos moídos"
+  },
+  {
+    "name": "Expresso Americano",
+    "image": "/assets/ExpressoAmericano.svg",
+    "type": "Tradicional",
+    "description": "Expresso diluído, menos intenso que o tradicional"
+  },
+  {
+    "name": "Expresso Cremoso",
+    "image": "/assets/ExpressoCremoso.svg",
+    "type": "Tradicional",
+    "description": "Café expresso tradicional com espuma cremosa"
+  },
+  {
+    "name": "Expresso Gelado",
+    "image": "/assets/ExpressoGelado.svg",
+    "type": "Tradicional",
+    "description": "Bebida preparada com café expresso e cubos de gelo"
+  },
+  {
+    "name": "Café com Leite",
+    "image": "/assets/CafeComLeite.svg",
+    "type": "Tradicional",
+    "description": "Meio a meio de expresso tradicional com leite vaporizado"
+  },
+  {
+    "name": "Latte",
+    "image": "/assets/Latte.svg",
+    "type": "Tradicional",
+    "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa"
+  },
+  {
+    "name": "Capuccino",
+    "image": "/assets/Capuccino.svg",
+    "type": "Tradicional",
+    "description": "Bebida com canela feita de doses iguais de café, leite e espuma"
+  },
+  {
+    "name": "Macchiato",
+    "image": "/assets/Macchiato.svg",
+    "type": "Tradicional",
+    "description": "Café expresso misturado com um pouco de leite quente e espuma"
+  },
+  {
+    "name": "Mocaccino",
+    "image": "/assets/Mocaccino.svg",
+    "type": "Tradicional",
+    "description": "Café expresso com calda de chocolate, pouco leite e espuma"
+  },
+  {
+    "name": "Chocolate Quente",
+    "image": "/assets/ChocolateQuente.svg",
+    "type": "Especial",
+    "description": "Bebida feita com chocolate dissolvido no leite quente e café"
+  },
+  {
+    "name": "Cubano",
+    "image": "/assets/Cubano.svg",
+    "type": "Especial",
+    "description": "Drink gelado de café expresso com rum, creme de leite e hortelã"
+  },
+  {
+    "name": "Havaiano",
+    "image": "/assets/Havaiano.svg",
+    "type": "Especial",
+    "description": "Bebida adocicada preparada com café e leite de coco"
+  },
+  {
+    "name": "Árabe",
+    "image": "/assets/Arabe.svg",
+    "type": "Especial",
+    "description": "Bebida preparada com grãos de café árabe e especiarias"
+  },
+  {
+    "name": "Irlandês",
+    "image": "/assets/Irlandes.svg",
+    "type": "Especial",
+    "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly"
+  }
+]
