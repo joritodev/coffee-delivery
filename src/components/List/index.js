@@ -9,7 +9,7 @@ const List = () => {
       <ListGrid >
         {
           data.map(item => (
-            <Card name={item.name} type={item.type} image={item.image} description={item.description} />
+            <Card name={item.name} type={item.type} image={item.image} description={item.description} price={item.price}/>
           ))
         }
       </ListGrid>

@@ -1,13 +1,15 @@
 import { CartContainer, CartQuantity } from "./styles.js"
 import { ShoppingCartIcon } from "@phosphor-icons/react"
 import { useCart } from "../../contexts/CartContext"
+import { useNavigate } from "react-router-dom"
 
 const Cart = () => {
   const { getTotalQuantity } = useCart();
   const totalQuantity = getTotalQuantity();
+  const navigate = useNavigate()
   
   return (
-    <CartContainer>
+    <CartContainer onClick={() => navigate('/checkout')} style={{ cursor: 'pointer' }}>
       {totalQuantity > 0 && (
         <CartQuantity>
           {totalQuantity}

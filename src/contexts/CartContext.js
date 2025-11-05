@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
         return {
           ...prev,
           [itemName]: newQuantity
-        };
+        }; 
       }
     });
   };
@@ -61,13 +61,18 @@ export const CartProvider = ({ children }) => {
     return cartItems[itemName] || 0;
   };
 
+  const clearCart = () => {
+    setCartItems({});
+  };
+
   const value = {
     cartItems,
     addToCart,
     adjustCartItem,
     updateCartItem,
     getTotalQuantity,
-    getItemQuantity
+    getItemQuantity,
+    clearCart
   };
 
   return (

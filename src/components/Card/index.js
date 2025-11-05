@@ -17,11 +17,10 @@ import { MinusIcon, PlusIcon, ShoppingCartSimpleIcon } from "@phosphor-icons/rea
 import { useCart } from "../../contexts/CartContext"
 import { useState, useEffect } from "react"
 
-const Card = ({ image, name, type, description }) => {
+const Card = ({ image, name, type, description, price }) => {
   const { updateCartItem, getItemQuantity } = useCart();
   const [localQuantity, setLocalQuantity] = useState(0);
 
-  // Sincroniza a quantidade local com a quantidade no carrinho
   useEffect(() => {
     const cartQuantity = getItemQuantity(name);
     setLocalQuantity(cartQuantity);
@@ -38,7 +37,6 @@ const Card = ({ image, name, type, description }) => {
   }
 
   const handleAddToCart = () => {
-    // Define a quantidade final no carrinho como a quantidade local
     updateCartItem(name, localQuantity);
   }
   return (
@@ -52,7 +50,7 @@ const Card = ({ image, name, type, description }) => {
         <CoffeeDescription>{description}</CoffeeDescription>
       </CoffeeText>
       <Buttons>
-        <Currency>R$<Value>9,90</Value></Currency>
+        <Currency>R$<Value>{price.toFixed(2).replace('.', ',')}</Value></Currency>
         <div>
           <QuantityButton>
             <button onClick={handleMinusQuantity}>

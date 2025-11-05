@@ -1,17 +1,15 @@
 import { Header } from "../../components/Header";
 import { AboutUs } from "../../components/AboutUs"
 import { List } from "../../components/List"
-import { CartProvider } from "../../contexts/CartContext";
+import { HomeContainer } from "./styles";
 
 function App() {
   return (
-    <CartProvider>
-      <div>
-        <Header />
-        <AboutUs />
-        <List />
-      </div>
-    </CartProvider>
+    <HomeContainer>
+      <Header />
+      <AboutUs />
+      <List />
+    </HomeContainer>
   );
 }
 
