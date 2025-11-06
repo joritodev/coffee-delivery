@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom"
 
 const Header = ({ quantity }) => {
   const navigate = useNavigate()
+  const handleLogoClick = () => {
+    navigate('/', { replace: false });
+  };
+  
   return (
     <HeaderContainer>
-      <HeaderLogo src={ Image } onClick={() => navigate('/')} style={{ cursor: 'pointer' }}/>
+      <HeaderLogo src={ Image } onClick={handleLogoClick} style={{ cursor: 'pointer' }}/>
       <HeaderDiv>
         <Location /> 
         <Cart quantity={quantity}/>

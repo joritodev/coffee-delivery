@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 import Cookies from 'js-cookie';
 
@@ -69,9 +69,9 @@ export const CartProvider = ({ children }) => {
     return cartItems[itemName] || 0;
   };
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCartItems({});
-  };
+  }, []);
 
   const value = {
     cartItems,

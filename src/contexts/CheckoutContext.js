@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 import Cookies from 'js-cookie';
 
@@ -32,24 +32,24 @@ export const CheckoutProvider = ({ children }) => {
     Cookies.set(COOKIE_KEY, itemsJSON)
   }, [address])
 
-  const clearCheckoutData = () => {
+  const clearCheckoutData = useCallback(() => {
     setAddress(initialState);
     Cookies.remove(COOKIE_KEY);
-  }
+  }, [])
 
-  const updateAddressField = (field, value) => {
+  const updateAddressField = useCallback((field, value) => {
     setAddress(prevAddress => ({
       ...prevAddress,
       [field]: value
     }));
-  };
+  }, []);
 
-  const setPaymentMethod = (method) => {
+  const setPaymentMethod = useCallback((method) => {
      setAddress(prevAddress => ({
       ...prevAddress,
       paymentMethod: method
-    }));
-  };
+     }));
+  }, []);
 
   const value = {
     address,

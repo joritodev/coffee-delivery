@@ -72,7 +72,7 @@ const Form = () => {
 
     fetchLocale();
 
-  }, [formData.cep])
+  }, [formData.cep, updateAddressField])
 
   const checkoutList = Object.keys(cartItems).map(itemName => {
     const productDetails = data.find(p => p.name === itemName);
@@ -117,6 +117,8 @@ const Form = () => {
 
     if (!formData.cep.trim()) {
       newErrors.cep = 'CEP é obrigatório';
+    } else if (formData.cep.trim().length !== 8) {
+      newErrors.uf = 'CEP deve ter 8 caracteres';
     }
     if (!formData.rua.trim()) {
       newErrors.rua = 'Rua é obrigatória';
@@ -152,9 +154,14 @@ const Form = () => {
     data.preventDefault();
 
     if (validateForm()) {
+      const completeOrderAddress = {
+        ...formData,
+        paymentMethod: selectedMethod
+      };
+
       navigate('/sucess', {
         state: {
-          orderAddress: address,
+          orderAddress: completeOrderAddress 
         }
       });
     }

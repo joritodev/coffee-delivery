@@ -8,8 +8,12 @@ const Cart = () => {
   const totalQuantity = getTotalQuantity();
   const navigate = useNavigate()
   
+  const handleCartClick = () => {
+    navigate('/checkout', { replace: false });
+  };
+  
   return (
-    <CartContainer onClick={() => navigate('/checkout')} style={{ cursor: 'pointer' }}>
+    <CartContainer onClick={handleCartClick} style={{ cursor: 'pointer' }}>
       {totalQuantity > 0 && (
         <CartQuantity>
           {totalQuantity}
