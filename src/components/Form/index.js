@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   DeliveryDetails, FormRow, Input, InputWrapper, OptionalLabel, PaymentContainer, PaymentMethod, PaymentText, Remove, Subtitle, Text, Texts, Title, Name, ProductContainer, ProductInfos, QuantityButtons, QuantityText, Total, Left, BodyInfos, PageContainer,
@@ -8,21 +8,71 @@ import { MapPinLineIcon, CurrencyDollarIcon, MoneyIcon, BankIcon, CreditCardIcon
 import { MinusIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react"
 import { useCart } from "../../contexts/CartContext"
 import data from "../../data.json"
+import { useCheckout } from "../../contexts/CheckoutContext";
 
 const Form = () => {
   const navigate = useNavigate();
-  const [selectedMethod, setSelectedMethod] = useState('');
+  const {
+    address,
+    updateAddressField,
+    setPaymentMethod
+  } = useCheckout();
+
+  const [selectedMethod, setSelectedMethod] = useState(address.paymentMethod || '');
+
   const [formData, setFormData] = useState({
-    cep: '',
-    rua: '',
-    numero: '',
-    complemento: '',
-    bairro: '',
-    cidade: '',
-    uf: '',
+    cep: address.cep || '',
+    rua: address.rua || '',
+    numero: address.numero || '',
+    complemento: address.complemento || '',
+    bairro: address.bairro || '',
+    cidade: address.cidade || '',
+    uf: address.uf || '',
   });
   const [errors, setErrors] = useState({});
-  const { cartItems, adjustCartItem, updateCartItem, clearCart } = useCart();
+  const { cartItems, adjustCartItem, RemoveItem } = useCart();
+
+  useEffect(() => {
+    if (formData.cep.length !== 8) {
+      return;
+    }
+
+    const fetchLocale = async () => {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${formData.cep}/json/`)
+
+        if (!response.ok) {
+          throw new Error('Erro ao buscar CEP');
+        }
+
+        const data = await response.json()
+
+        if (data.erro) {
+          console.log('CEP não encontrado');
+          return;
+        }
+
+        setFormData(prevData => ({
+          ...prevData,
+          rua: data.logradouro,
+          bairro: data.bairro,
+          cidade: data.localidade,
+          uf: data.uf,
+        }));
+
+        updateAddressField('rua', data.logradouro);
+        updateAddressField('bairro', data.bairro);
+        updateAddressField('cidade', data.localidade);
+        updateAddressField('uf', data.uf);
+
+      } catch (error) {
+        console.log('Erro ao buscar localização', error)
+      }
+    };
+
+    fetchLocale();
+
+  }, [formData.cep])
 
   const checkoutList = Object.keys(cartItems).map(itemName => {
     const productDetails = data.find(p => p.name === itemName);
@@ -52,6 +102,7 @@ const Form = () => {
       ...prev,
       [field]: value
     }));
+    updateAddressField(field, value);
     if (errors[field]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -97,15 +148,15 @@ const Form = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (data) => {
+    data.preventDefault();
 
     if (validateForm()) {
-      if (clearCart) {
-        clearCart();
-      }
-
-      navigate('/sucess');
+      navigate('/sucess', {
+        state: {
+          orderAddress: address,
+        }
+      });
     }
   };
 
@@ -238,6 +289,7 @@ const Form = () => {
                 isSelected={selectedMethod === method.id}
                 onClick={() => {
                   setSelectedMethod(method.id);
+                  setPaymentMethod(method.id)
                   if (errors.paymentMethod) {
                     setErrors(prev => {
                       const newErrors = { ...prev };
@@ -276,7 +328,7 @@ const Form = () => {
                         <button type="button" onClick={() => adjustCartItem(item.name, 1)}>
                           <PlusIcon size={14} color="#8047F8" />
                         </button>
-                        <Remove type="button" onClick={() => updateCartItem(item.name, 0)}>
+                        <Remove type="button" onClick={() => RemoveItem(item.name)}>
                           <TrashIcon size={16} color="#8047F8" />
                           <p>Remover</p>
                         </Remove>

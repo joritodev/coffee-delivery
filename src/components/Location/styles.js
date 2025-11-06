@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LocationContainer = styled.div`
-  width: 140px;
+  width: calc(100% - 50px);
   height: 100%;
   display: flex;
   align-items: center;

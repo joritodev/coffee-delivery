@@ -18,7 +18,7 @@ import { useCart } from "../../contexts/CartContext"
 import { useState, useEffect } from "react"
 
 const Card = ({ image, name, type, description, price }) => {
-  const { updateCartItem, getItemQuantity } = useCart();
+  const { updateCartItem, getItemQuantity, RemoveItem } = useCart();
   const [localQuantity, setLocalQuantity] = useState(0);
 
   useEffect(() => {
@@ -29,15 +29,22 @@ const Card = ({ image, name, type, description, price }) => {
   const handlePlusQuantity = () => {
     setLocalQuantity(localQuantity + 1);
   }
-  
+
   const handleMinusQuantity = () => {
-    if(localQuantity > 0){
-      setLocalQuantity(localQuantity - 1);
-    }
+    setLocalQuantity(prev => {
+      if (prev > 0) return prev - 1
+
+      return 0;
+    })
+
   }
 
   const handleAddToCart = () => {
-    updateCartItem(name, localQuantity);
+    if (localQuantity >= 2) {
+      updateCartItem(name, localQuantity);
+    } else {
+      RemoveItem(name);
+    }
   }
   return (
     <CardContainer>

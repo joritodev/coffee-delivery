@@ -1,17 +1,25 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import Cookies from 'js-cookie';
 
 const CartContext = createContext();
+const COOKIE_KEY = 'coffee-delivery:cart-v1'
 
 export const useCart = () => {
   const context = useContext(CartContext);
-   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
   return context;
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState(() => {
+    const itemsJSON = Cookies.get(COOKIE_KEY);
+    return itemsJSON ? JSON.parse(itemsJSON) : []
+  });
+
+  useEffect(() => {
+    const itemsJSON = JSON.stringify(cartItems)
+    Cookies.set(COOKIE_KEY, itemsJSON, { expires: 30 })
+  }, [cartItems])
 
   const addToCart = (itemName, quantity = 1) => {
     setCartItems(prev => ({
@@ -24,7 +32,7 @@ export const CartProvider = ({ children }) => {
     setCartItems(prev => {
       const currentQuantity = prev[itemName] || 0;
       const newQuantity = currentQuantity + quantityChange;
-      
+
       if (newQuantity <= 0) {
         const newItems = { ...prev };
         delete newItems[itemName];
@@ -33,25 +41,25 @@ export const CartProvider = ({ children }) => {
         return {
           ...prev,
           [itemName]: newQuantity
-        }; 
+        };
       }
     });
   };
 
   const updateCartItem = (itemName, quantity) => {
-    if (quantity <= 0) {
-      setCartItems(prev => {
-        const newItems = { ...prev };
-        delete newItems[itemName];
-        return newItems;
-      });
-    } else {
       setCartItems(prev => ({
         ...prev,
         [itemName]: quantity
       }));
-    }
   };
+
+  const RemoveItem = (itemName) => {
+    setCartItems(prev => {
+      const newItems = { ...prev };
+      delete newItems[itemName];
+      return newItems;
+    });
+  }
 
   const getTotalQuantity = () => {
     return Object.values(cartItems).reduce((total, quantity) => total + quantity, 0);
@@ -72,7 +80,8 @@ export const CartProvider = ({ children }) => {
     updateCartItem,
     getTotalQuantity,
     getItemQuantity,
-    clearCart
+    clearCart,
+    RemoveItem
   };
 
   return (
