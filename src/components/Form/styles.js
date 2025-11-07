@@ -5,6 +5,28 @@ export const PageContainer = styled.form`
   gap: 32px;
   margin: 40px 160px;
   width: auto;
+  box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    margin: 40px 80px;
+    gap: 24px;
+  }
+
+  @media (max-width: 968px) {
+    flex-direction: column;
+    margin: 32px 40px;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 24px 20px;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 20px 16px;
+    gap: 12px;
+  }
 `;
 
 export const LeftColumn = styled.div`
@@ -13,6 +35,12 @@ export const LeftColumn = styled.div`
   gap: 12px;
   flex: 1;
   min-width: 640px;
+  width: 100%;
+
+  @media (max-width: 968px) {
+    min-width: 0;
+    width: 100%;
+  }
 `;
 
 export const RightColumn = styled.div`
@@ -21,6 +49,12 @@ export const RightColumn = styled.div`
   gap: 12px;
   flex: 1;
   min-width: 448px;
+  width: 100%;
+
+  @media (max-width: 968px) {
+    min-width: 0;
+    width: 100%;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -67,11 +101,41 @@ export const DeliveryDetails = styled.div`
   flex-direction: column;
   gap: 16px;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+    gap: 14px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 16px;
+    gap: 12px;
+  }
 `;
 
 export const FormRow = styled.div`
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
+
+  > div {
+    flex: 1;
+    min-width: 0;
+
+    @media (max-width: 640px) {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+  }
 `;
 
 export const Input = styled.input`
@@ -126,6 +190,18 @@ export const OrderSummaryCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 16px;
+    border-radius: 6px 24px 6px 24px;
+    gap: 16px;
+  }
 `;
 
 export const CheckoutListContainer = styled.div`
@@ -142,6 +218,11 @@ export const ProductContainer = styled.div`
   border-bottom: 1px solid #E6E5E5;
   margin-bottom: 24px;
 
+  @media (max-width: 480px) {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
   &:last-of-type {
     border-bottom: none;
     margin-bottom: 0;
@@ -151,6 +232,13 @@ export const ProductContainer = styled.div`
     width: 64px;
     height: 64px;
     margin-right: 20px;
+    flex-shrink: 0;
+
+    @media (max-width: 480px) {
+      width: 56px;
+      height: 56px;
+      margin-right: 12px;
+    }
   }
 `;
 
@@ -167,6 +255,12 @@ export const BodyInfos = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex: 1;
+  gap: 12px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 export const Left = styled.div`
@@ -189,6 +283,12 @@ export const QuantityButtons = styled.div`
   flex-direction: row;
   height: 32px;
   gap: 8px;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    height: auto;
+    gap: 6px;
+  }
 
   button {
     width: auto;
@@ -202,6 +302,13 @@ export const QuantityButtons = styled.div`
     cursor: pointer;
     padding: 8px;
     border-radius: 6px;
+    flex-shrink: 0;
+
+    @media (max-width: 480px) {
+      min-width: 28px;
+      height: 28px;
+      padding: 6px;
+    }
 
     svg {
         color: #8047F8;
@@ -231,6 +338,14 @@ export const Remove = styled.button`
   cursor: pointer;
   flex-shrink: 0;
 
+  @media (max-width: 480px) {
+    width: auto;
+    min-width: 80px;
+    height: 28px;
+    padding: 0 6px;
+    gap: 3px;
+  }
+
   p {
     font-family: "Roboto";
     font-size: 12px;
@@ -238,6 +353,10 @@ export const Remove = styled.button`
     text-transform: uppercase;
     color: #574F4D;
     margin: 0;
+
+    @media (max-width: 480px) {
+      font-size: 11px;
+    }
   }
 `;
 
@@ -260,6 +379,16 @@ export const PaymentContainer = styled.div`
   gap: 32px;
   box-sizing: border-box;
 
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 16px;
+    gap: 20px;
+  }
+
   .methods {
     display: flex;
     flex-direction: row;
@@ -267,6 +396,11 @@ export const PaymentContainer = styled.div`
     justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 `;
 
@@ -282,6 +416,18 @@ export const PaymentMethod = styled.button`
   height: 51px;
   background-color: #E6E5E5;
   cursor: pointer;
+  flex-shrink: 0;
+
+  @media (max-width: 640px) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media (max-width: 480px) {
+    height: 48px;
+    padding-left: 12px;
+    gap: 8px;
+  }
 
   &:hover {
     background-color: #EBE5F9;
@@ -367,6 +513,28 @@ export const EmptyCartContainer = styled.div`
   min-height: 60vh;
   margin: 40px 160px;
   gap: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    margin: 40px 80px;
+  }
+
+  @media (max-width: 968px) {
+    margin: 32px 40px;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 24px 20px;
+    gap: 18px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 20px 16px;
+    gap: 16px;
+    min-height: 50vh;
+  }
 `;
 
 export const EmptyCartIcon = styled.div`
@@ -388,6 +556,14 @@ export const EmptyCartTitle = styled.h2`
   color: #403937;
   text-align: center;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 export const EmptyCartText = styled.p`
@@ -399,6 +575,15 @@ export const EmptyCartText = styled.p`
   text-align: center;
   max-width: 500px;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 export const EmptyCartButton = styled.button`

@@ -40,7 +40,7 @@ const Card = ({ image, name, type, description, price }) => {
   }
 
   const handleAddToCart = () => {
-    if (localQuantity >= 2) {
+    if (localQuantity > 0) {
       updateCartItem(name, localQuantity);
     } else {
       RemoveItem(name);

@@ -44,4 +44,19 @@ export const ListGrid = styled.div`
     grid-auto-rows: auto;
     gap: 40px 10px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px 8px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 24px 8px;
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+        gap: 20px 0;
+    }
 ` 

@@ -1,8 +1,10 @@
 import styled from "styled-components"
 
 export const CardContainer = styled.div`
-  width: 256px;
-  height: 310px;
+  width: 100%;
+  max-width: 256px;
+  min-height: 330px;
+  height: auto;
   border-top-right-radius: 36px;
   border-bottom-left-radius: 36px;
   position: relative;
@@ -13,6 +15,20 @@ export const CardContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    min-height: 280px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 260px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 `
 
 export const CoffeeImg = styled.img`
@@ -52,9 +68,11 @@ export const CoffeeText = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 216px;
+  width: 100%;
+  max-width: 216px;
   min-height: 80px;
   padding: 0 5px;
+  box-sizing: border-box;
 `
 
 export const CoffeeName = styled.h2`
@@ -79,14 +97,32 @@ export const Buttons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 258px;
+  width: 100%;
+  max-width: 258px;
   color: #574F4D;
   line-height: 130%;
-  margin: 50px 0 -25px 0;
+  margin: 50px 0 -30px 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @media (max-width: 768px) {
+    margin: 40px 0 0 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 30px 0 0 0;
+    gap: 6px;
+  }
 
   div{
     margin-left: 10px;
     display: flex;
+
+    @media (max-width: 480px) {
+      margin-left: 6px;
+    }
   }
 `
 
@@ -106,7 +142,7 @@ export const Value = styled.strong`
 
 export const QuantityButton = styled.div`
   width: 72px;
-  height: 28px;
+  height: 38px;
   background-color: #E6E5E5;
   padding: 5px;
   display: flex;
