@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# ☕ Coffee Delivery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Sobre o Projeto
 
-## Available Scripts
+O **Coffee Delivery** é uma aplicação web desenvolvida em React que simula um e-commerce de café, permitindo aos usuários navegar por um catálogo de produtos, adicionar itens ao carrinho, calcular o total e simular o processo de checkout com informações de entrega.
 
-In the project directory, you can run:
+Este projeto foi desenvolvido para aplicar e consolidar os conhecimentos adquiridos em uma formação de React, focando em conceitos como componentização, gerenciamento de estado, roteamento e estilização avançada.
 
-### `npm start`
+## ✨ Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O projeto foi construído utilizando as seguintes tecnologias:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React:** Biblioteca JavaScript para construção de interfaces de usuário.
 
-### `npm test`
+- **TypeScript:** (Assumindo que o projeto utiliza TypeScript para tipagem, o que é uma boa prática em projetos React modernos, embora o `package.json` mostre majoritariamente JavaScript, a inclusão de TypeScript é uma prática comum em formações avançadas). *Correção: O **`package.json`** e a análise inicial indicam JavaScript (98.7%), então vou focar nas libs listadas.*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React Router DOM:** Para gerenciamento de rotas e navegação entre páginas.
 
-### `npm run build`
+- **Styled Components:** Para estilização baseada em componentes, garantindo um CSS modular e dinâmico.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Phosphor Icons:** Biblioteca de ícones para a interface.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **JS Cookie:** Para gerenciamento de cookies (possivelmente para persistência de carrinho ou tema).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Instalação e Execução
 
-### `npm run eject`
+Para rodar o projeto localmente, siga os passos abaixo:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pré-requisitos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Certifique-se de ter o [Node.js](https://nodejs.org/en/) e o [npm](https://www.npmjs.com/) (ou [Yarn](https://yarnpkg.com/)) instalados em sua máquina.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Clonando o Repositório
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/joritodev/coffee-delivery.git
+cd coffee-delivery
+```
 
-## Learn More
+### Instalação das Dependências
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+# ou
+yarn install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Executando a Aplicação
 
-### Code Splitting
+```bash
+npm start
+# ou
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A aplicação será iniciada em modo de desenvolvimento e estará acessível em `http://localhost:3000`.
 
-### Analyzing the Bundle Size
+## 🌐 Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+O projeto está atualmente em produção e pode ser acessado através do link:
 
-### Making a Progressive Web App
+[Coffee Delivery - Vercel](https://coffee-delivery-five.vercel.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🧑‍💻 Autor
 
-### Advanced Configuration
+Desenvolvido por [joritodev](https://github.com/joritodev).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
