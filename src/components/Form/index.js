@@ -87,9 +87,9 @@ const Form = () => {
   }).filter(Boolean)
 
   const paymentMethods = [
-    { id: 'credito', icon: <CreditCardIcon size={16} color="#8047f8" />, label: 'Cartão de crédito' },
-    { id: 'debito', icon: <BankIcon size={16} color="#8047f8" />, label: 'Cartão de débito' },
-    { id: 'dinheiro', icon: <MoneyIcon size={16} color="#8047f8" />, label: 'Dinheiro' },
+    { id: 'credit', icon: <CreditCardIcon size={16} color="#8047f8" />, label: 'Cartão de crédito' },
+    { id: 'debit', icon: <BankIcon size={16} color="#8047f8" />, label: 'Cartão de débito' },
+    { id: 'money', icon: <MoneyIcon size={16} color="#8047f8" />, label: 'Dinheiro' },
   ];
 
 

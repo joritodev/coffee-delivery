@@ -121,6 +121,7 @@ export const Benefits = styled.div`
   }
 
   @media (max-width: 480px) {
+    justify-items: center;
     gap: 12px;
   }
 
