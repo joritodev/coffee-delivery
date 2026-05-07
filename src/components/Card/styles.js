@@ -77,17 +77,20 @@ export const CoffeeText = styled.div`
 
 export const CoffeeName = styled.h2`
   font-size: 20px;
-  font-family: "Baloo 2";
+  font-family: "Baloo 2", cursive;
   font-weight: bold;
-  letter-spacing: 130%;
+  line-height: 130%;
+  letter-spacing: 0;
   color: #403937;
+  text-align: center;
 `
 
 export const CoffeeDescription = styled.p`
   font-size: 14px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  letter-spacing: 130%;
+  line-height: 130%;
+  letter-spacing: 0;
   color: #8D8686;
   text-align: center;
   margin-top: 10px;
@@ -144,10 +147,11 @@ export const QuantityButton = styled.div`
   width: 72px;
   height: 38px;
   background-color: #E6E5E5;
-  padding: 5px;
+  padding: 8px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 4px;
   border-radius: 6px;
 
   button {
@@ -155,16 +159,24 @@ export const QuantityButton = styled.div`
     background-color: transparent;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    line-height: 0;
   }
 `
 
 export const QuantityText = styled.p`
   font-size: 16px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  letter-spacing: 130%;
+  line-height: 1;
+  letter-spacing: 0;
   color: #272221;
+  width: 18px;
+  text-align: center;
   
   @media (max-width: 768px) {
     font-size: 15px;
